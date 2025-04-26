@@ -139,9 +139,8 @@
       position: relative;
       opacity: 0;
       transform: translateY(50px);
-      width: 350px; /* Or use calc(33.333% - 20px) for perfect spacing */
-  height: auto; /* Remove fixed height */
-  min-height: 565px; /* Set minimum height instead */
+       width: calc(33.333% - 20px); /* 3 cards per row by default */
+  height: 565px; /* Keep your fixed height */
     }
 
     .alliance-card.revealed {
@@ -333,6 +332,13 @@
     }
 
     /* Responsive */
+
+    @media (max-width: 1200px) {
+  .alliance-card {
+    width: calc(50% - 20px);
+  }
+}
+    
     @media (max-width: 992px) {
       .alliance-grid {
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -355,7 +361,7 @@
       }
 
       .alliance-card {
-    width: 100%; /* 1 card per row on small screens */
+    width: 100%;
     max-width: 350px;
   }
     }
@@ -364,6 +370,13 @@
       .alliance-header h1 {
         font-size: 2.2rem;
       }
+
+      @media (max-width: 480px) {
+  .alliance-card {
+    height: auto; /* Makes card height flexible */
+    min-height: 500px; /* Minimum height */
+  }
+}
       
       .alliance-grid {
         grid-template-columns: 1fr;
