@@ -121,12 +121,13 @@
 
     /* Alliance Cards */
     .alliance-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: 50px;
-      position: relative;
-      z-index: 1;
-    }
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  position: relative;
+  z-index: 1;
+}
 
     .alliance-card {
       background: linear-gradient(145deg, var(--dark-gray), var(--darker));
@@ -138,8 +139,9 @@
       position: relative;
       opacity: 0;
       transform: translateY(50px);
-      width: 350px;
-      height: 565px;
+      width: 350px; /* Or use calc(33.333% - 20px) for perfect spacing */
+  height: auto; /* Remove fixed height */
+  min-height: 565px; /* Set minimum height instead */
     }
 
     .alliance-card.revealed {
@@ -334,6 +336,7 @@
     @media (max-width: 992px) {
       .alliance-grid {
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        width: calc(50% - 30px);
       }
     }
 
@@ -350,6 +353,11 @@
         flex-direction: column;
         gap: 15px;
       }
+
+      .alliance-card {
+    width: 100%; /* 1 card per row on small screens */
+    max-width: 350px;
+  }
     }
 
     @media (max-width: 576px) {
