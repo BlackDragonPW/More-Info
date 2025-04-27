@@ -78,6 +78,41 @@
       color: var(--gray);
     }
 
+    .back-button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1001;
+  padding: 12px 25px;
+  background: rgba(0, 191, 255, 0.1);
+  color: var(--primary);
+  border-radius: 30px;
+  text-decoration: none;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 191, 255, 0.3);
+  box-shadow: 0 0 15px rgba(0, 191, 255, 0.3),
+              0 0 30px rgba(0, 191, 255, 0.2) inset;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.back-button:hover {
+  background: rgba(0, 191, 255, 0.2);
+  box-shadow: 0 0 25px rgba(0, 191, 255, 0.5),
+              0 0 40px rgba(0, 191, 255, 0.3) inset;
+  transform: translateY(-2px);
+}
+
+.back-arrow {
+  font-size: 1.2em;
+  filter: drop-shadow(0 0 3px var(--primary));
+}
+
     /* Main Content */
     .allies-section {
       padding: 80px 0;
@@ -389,6 +424,13 @@
     width: 100%;
     max-width: 350px;
   }
+
+       .back-button {
+    padding: 10px 20px;
+    font-size: 0.9em;
+    top: 15px;
+    left: 15px;
+       }
     }
 
     @media (max-width: 576px) {
@@ -411,7 +453,9 @@
 </head>
 <body>
   <header class="alliance-header">
-    <a href="https://blackdragonpw.github.io/VoughtInternational/">Back</a>
+    <a href="https://blackdragonpw.github.io/VoughtInternational/" class="back-button">
+  <span class="back-arrow">&#8592;</span> Back
+    </a>
     <div class="container">
       <h1 class="image-text">Vought International<br>Allies</h1>
       <p>Strategic partnerships that strengthen our position in the global arena</p>
