@@ -3,10 +3,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    font-family: 'Arial', sans-serif;
+    background-color: #1a1a1a;
+    color: #e0e0e0;
     line-height: 1.6;
 }
 
@@ -21,37 +23,41 @@ body {
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 3rem;
-    color: #333;
+    color: #ff4444;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 /* Grid System */
-.grid {
+.alliance-grid {
     display: grid;
     gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
-.grid-col-3 {
-    grid-template-columns: repeat(3, 1fr);
-}
-
-/* Cards */
-.card {
-    background: #fff;
+/* Alliance Cards */
+.alliance-card {
+    background: #2d2d2d;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
 }
 
-.card:hover {
+.alliance-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
 }
 
 .card-banner {
     height: 200px;
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
     position: relative;
+    transition: transform 0.3s ease;
 }
 
 .card-content {
@@ -60,22 +66,27 @@ body {
 
 .card-content h3 {
     font-size: 1.5rem;
-    margin-bottom: 0.75rem;
-    color: #222;
+    margin-bottom: 1rem;
+    color: #ff6666;
+    font-weight: 600;
 }
 
 .card-content p {
-    color: #666;
+    color: #b0b0b0;
     margin-bottom: 1.5rem;
+    line-height: 1.4;
+    font-size: 0.95rem;
 }
 
 /* Alliance Stats */
 .alliance-stats {
     display: flex;
-    justify-content: space-between;
-    background: #f8f9fa;
+    justify-content: space-around;
+    background: #363636;
     padding: 1rem;
     border-radius: 8px;
+    margin-top: 1rem;
+    border: 1px solid #444;
 }
 
 .stat-item {
@@ -84,28 +95,85 @@ body {
 
 .stat-value {
     font-weight: 700;
-    color: #2c3e50;
+    color: #ff8888;
     margin-bottom: 0.25rem;
+    font-size: 1.1rem;
 }
 
 .stat-label {
-    font-size: 0.9rem;
-    color: #7f8c8d;
+    font-size: 0.85rem;
+    color: #909090;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Animated Background Effect */
+.alliance-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, 
+        rgba(255, 68, 68, 0.1) 0%,
+        rgba(255, 68, 68, 0.05) 50%,
+        rgba(255, 68, 68, 0.1) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.alliance-card:hover::before {
+    opacity: 1;
 }
 
 /* Responsive Design */
-@media (max-width: 992px) {
-    .grid-col-3 {
-        grid-template-columns: repeat(2, 1fr);
+@media (max-width: 1200px) {
+    .container {
+        padding: 1.5rem;
     }
 }
 
 @media (max-width: 768px) {
-    .grid-col-3 {
-        grid-template-columns: 1fr;
-    }
-    
     .section-title {
         font-size: 2rem;
     }
+    
+    .alliance-grid {
+        grid-template-columns: 1fr;
+    }
 }
+
+@media (max-width: 480px) {
+    .card-content {
+        padding: 1rem;
+    }
+    
+    .stat-value {
+        font-size: 1rem;
+    }
+    
+    .section-title {
+        font-size: 1.75rem;
+    }
+}
+
+/* Loading Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.alliance-card {
+    animation: fadeIn 0.6s ease forwards;
+    opacity: 0;
+}
+
+/* Delay animations for staggered effect */
+.alliance-card:nth-child(1) { animation-delay: 0.1s; }
+.alliance-card:nth-child(2) { animation-delay: 0.2s; }
+.alliance-card:nth-child(3) { animation-delay: 0.3s; }
+.alliance-card:nth-child(4) { animation-delay: 0.4s; }
+.alliance-card:nth-child(5) { animation-delay: 0.5s; }
+.alliance-card:nth-child(6) { animation-delay: 0.6s; }
+.alliance-card:nth-child(7) { animation-delay: 0.7s; }
