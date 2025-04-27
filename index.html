@@ -171,17 +171,7 @@
       transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       border: 1px solid rgba(0, 247, 255, 0.1);
       position: relative;
-      opacity: 0;
-      transform: translateY(0px);
        width: 350px;    /* Set fixed size here */
-  height: 565px;
-  margin: 0 auto;
-    }
-
-    .alliance-card.revealed {
-      opacity: 1;
-      transform: translateY(50);
-      width: 350px;    /* Set fixed size here */
   height: 565px;
   margin: 0 auto;
     }
@@ -641,28 +631,6 @@
   </footer>
 
   <script>
-    // Scroll reveal animation
-    document.addEventListener('DOMContentLoaded', function() {
-      const allianceCards = document.querySelectorAll('.alliance-card');
-      
-      function checkCards() {
-        const triggerBottom = window.innerHeight / 5 * 4;
-        
-        allianceCards.forEach(card => {
-          const cardTop = card.getBoundingClientRect().top;
-          
-          if(cardTop < triggerBottom) {
-            card.classList.add('revealed');
-          }
-        });
-      }
-      
-      // Initial check
-      checkCards();
-      
-      // Check on scroll
-      window.addEventListener('scroll', checkCards);
-    });
   </script>
 </body>
           </html>
